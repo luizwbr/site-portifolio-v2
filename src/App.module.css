@@ -1,0 +1,99 @@
+/* src/App.module.css */
+.heroSection {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.greeting {
+    color: var(--color-accent);
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: var(--color-text-secondary);
+    margin: 0.5rem 0 2rem 0;
+}
+
+.introText {
+    max-width: 600px;
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 3rem;
+}
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem 2rem;
+    border: 1px solid var(--color-accent);
+    color: #0a1628;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+    box-shadow: 0 4px 15px var(--color-glow);
+}
+
+.ctaButton:hover {
+    background: linear-gradient(135deg, var(--color-accent-hover) 0%, var(--color-accent) 100%);
+    color: #0a1628;
+    box-shadow: 0 6px 25px var(--color-glow), 0 0 40px var(--color-glow);
+    transform: translateY(-2px);
+}
+
+.ignoreButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem 1rem;
+    background-color: transparent;
+    border: 0px solid var(--color-accent);
+    color: var(--color-accent);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ignoreButton:hover {
+    color: var(--color-accent-hover);
+    box-shadow: 0 0 20px var(--color-glow);
+}
+
+.footer {
+    margin-top: auto;
+    padding: 2rem 0;
+    border-top: 1px solid var(--color-bg-secondary);
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footerLink {
+    color: var(--color-text-secondary);
+    font-size: 1.5rem;
+}
+.footerLink:hover { color: var(--color-accent); }
+.emailLink {
+    padding-left: 10px;
+    padding-top: 4px;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+}
+.emailLink:hover { color: var(--color-accent); }
