@@ -57,7 +57,7 @@ export const portfolioData = [
     {
         id: 'exp-webgenium',
         type: ITEM_TYPES.BIO,
-        title: 'Programador Master [presencial]',
+        title: 'Programador Master',
         description: 'Atuação na Webgenium (Cascavel-PR) por 8 anos no desenvolvimento e manutenção de portais e sistemas em PHP/Joomla, criação de lojas virtuais com plataforma própria e VirtueMart, configuração de segurança para serviços web, suporte a Google Ads/Analytics/Webmaster Tools e otimizações de SEO.',
         tags: ['Webgenium', 'PHP', 'Joomla', 'VirtueMart', 'SEO', 'Google Ads', 'Google Analytics'],
         keywords: ['desenvolvimento web', 'e-commerce', 'segurança', 'otimização', 'presencial']
@@ -121,6 +121,15 @@ export const portfolioData = [
         tags: ['Shell', 'Automation', 'Ubuntu', 'Development Setup'],
         url: 'https://github.com/luizwbr/ubuntu-workstation',
         keywords: ['workstation', 'setup', 'dev environment', 'github']
+    },
+    {
+        id: 'palestras-tech-talks',
+        type: ITEM_TYPES.PROJECT,
+        title: 'Palestras e Tech Talks [slideshare]',
+        description: 'Palestras e apresentações sobre desenvolvimento web, e-commerce e boas práticas de programação, disponíveis no Slideshare.',
+        tags: ['Palestras', 'E-commerce', 'Slides'],
+        url: 'https://pt.slideshare.net/luizwbr',
+        keywords: ['slideshare', 'palestras', 'E-commerce']
     },
 
 
