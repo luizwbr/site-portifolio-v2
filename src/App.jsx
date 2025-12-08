@@ -1,15 +1,21 @@
 // src/App.jsx
 import React, { useState } from 'react';
 import SearchOverlay from './components/SearchOverlay';
-import GamificationBar from './components/GamificationBar';
 import VictoryMenu from './components/VictoryMenu'; // Importe o novo menu
+import SpaceBackground from './components/SpaceBackground';
 import { useGame } from './hooks/useGame';
 import { useSearch } from './hooks/useSearch'; // Importe o search aqui também
-import { FiSearch, FiGithub, FiLinkedin, FiGlobe, FiMail } from 'react-icons/fi';
+import { FiSearch, FiGithub, FiLinkedin, FiGlobe, FiMail, FiMousePointer } from 'react-icons/fi';
 import styles from './App.module.css';
 
 function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  
+  // Detectar se é mobile
+  const [isMobile] = useState(() => {
+    return window.innerWidth <= 768;
+  });
   
   // Estado da busca agora vive aqui no App
   const [searchQuery, setSearchQuery] = useState('');
@@ -18,7 +24,7 @@ function App() {
   const { results, hasResults } = useSearch(searchQuery, setSearchQuery);
   
   // Inicializa o jogo
-  const { progress, unlockedCount, totalItems, unlockItems, unlockedIds, unlockAll } = useGame();
+  const { progress,  unlockAll } = useGame();
 
   // Função chamada pelos botões de vitória
   const handleQuickAccess = (categoryName) => {
@@ -26,14 +32,13 @@ function App() {
       setIsSearchOpen(true);        // Abre o modal
   };
 
-  const ctaButtonText = (progress) => {
-    if (progress === 0) return "Iniciar Experimento de Busca";
-    if (progress < 100) return `Continuar Buscando... (${progress}%)`;
-    return "Pesquisar no portfólio";
+  const ctaButtonText = () => {
+    return "Pesquisar no site";
   }
 
   return (
     <div className="container">
+      <SpaceBackground isMobile={isMobile} />
       <main className={styles.heroSection}>
         
         <span className={styles.greeting}>OLÁ, MEU NOME É</span>
@@ -41,9 +46,10 @@ function App() {
         <h2 className={styles.subtitle}>Sou desenvolvedor de sistemas.</h2>
         
         <p className={styles.introText}>
-          Sou um desenvolvedor de sistemas focado em criar arquiteturas robustas e escaláveis. <br/>
-          Este portfólio é um <b>experimento</b>: em vez de navegar, você <b>pesquisa</b>.<br/>
-          Todos os dados sobre meus projetos, skills e carreira estão indexados localmente aqui.
+          Atuo como programador desde 2009. <br/>         
+          Natural do Paraná, Brasil, tenho mais de 15 anos de experiência em backend e frontend.<br/>
+<br/>
+          Explore meu portfólio e descubra meus projetos, habilidades e trajetória profissional.  
         </p>
 
         <button 
@@ -53,7 +59,7 @@ function App() {
                 setIsSearchOpen(true);
             }}
         >
-            <FiSearch /> {ctaButtonText(progress)}
+            <FiSearch /> {ctaButtonText()}
         </button>
         {progress < 100 && (
           <button 
@@ -64,11 +70,22 @@ function App() {
                   unlockAll();
               }}
           >
-              Ignorar experimento e desbloquear tudo
+              Mostrar menu
           </button>
         )}
-        {progress === 100 && (
-            <VictoryMenu onCategorySelect={handleQuickAccess} />
+        {progress === 100 && isMenuOpen && (
+            <VictoryMenu 
+              onCategorySelect={handleQuickAccess}
+              onClose={() => setIsMenuOpen(false)}
+            />
+        )}
+        {progress === 100 && !isMenuOpen && (
+          <button 
+              className={styles.ignoreButton} 
+              onClick={() => setIsMenuOpen(true)}
+          >
+              Mostrar menu
+          </button>
         )}
       </main>
 
@@ -79,29 +96,41 @@ function App() {
         <a href="https://linkedin.com/in/luizwbr" target="_blank" rel="noopener" className={styles.footerLink} title="LinkedIn">
             <FiLinkedin />
         </a>
-        <a href="https://weber.eti.br" target="_blank" rel="noopener" className={styles.footerLink} title="Website">
+        <a href="https://www.weber.eti.br" target="_blank" rel="noopener" className={styles.footerLink} title="Website">
             <FiGlobe />
         </a>
         <a href="mailto:luiz.weber@pm.me" target="_blank" rel="noopener" className={styles.emailLink} title="Entre em contato">
-            <FiMail size="15" /> E-mail: <a href="mailto:luiz.weber@pm.me">luiz.weber@pm.me</a>
+            <FiMail size="15" /> E-mail: <b>luiz.weber@pm.me</b>
         </a>
       </footer>
 
-      <GamificationBar 
-        progress={progress} 
-        unlockedCount={unlockedCount} 
-        total={totalItems} 
-      />
       <SearchOverlay 
         isOpen={isSearchOpen} 
         onClose={() => setIsSearchOpen(false)}
-        onResultsFound={unlockItems}
-        unlockedIds={unlockedIds}
         query={searchQuery}
         setQuery={setSearchQuery}
         results={results}
         hasResults={hasResults}
       />
+      
+      {!isMobile && (
+        <div className={styles.backgroundControls}>
+          <div className={styles.controlsTitle}>
+            <FiMousePointer size={16} />
+            <span>Background Interativo</span>
+          </div>
+          <div className={styles.controlsList}>
+            <div className={styles.controlItem}>
+              <span className={styles.controlKey}>Arrastar</span>
+              <span className={styles.controlDesc}>Rotacionar câmera</span>
+            </div>
+            <div className={styles.controlItem}>
+              <span className={styles.controlKey}>Scroll</span>
+              <span className={styles.controlDesc}>Zoom in/out</span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

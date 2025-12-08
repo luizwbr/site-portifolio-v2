@@ -1,12 +1,13 @@
 /* src/index.css */
 :root {
   --color-bg-main: linear-gradient(135deg, #0a1628 0%, #0d1b2a 50%, #1b263b 100%);
-  --color-bg-secondary: rgba(15, 30, 45, 0.6);
+  --color-bg-secondary: #0f1e2d99;
+  --color-bg-tertiary: #007386;
   --color-text-primary: #e0f2fe;
-  --color-text-secondary: #94a3b8;
+  --color-text-secondary: #bdcee5;
   --color-accent: #06b6d4;
   --color-accent-hover: #22d3ee;
-  --color-glow: rgba(6, 182, 212, 0.3);
+  --color-glow: #06b6d44d;
   
   --font-main: 'Outfit', sans-serif;
   --font-heading: 'Montserrat', sans-serif;

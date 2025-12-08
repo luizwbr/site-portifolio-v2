@@ -5,6 +5,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    position: relative;
+    z-index: 1;
 }
 
 .greeting {
@@ -83,6 +85,8 @@
     border-top: 1px solid var(--color-bg-secondary);
     display: flex;
     gap: 1.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .footerLink {
@@ -97,3 +101,89 @@
     font-size: 1rem;
 }
 .emailLink:hover { color: var(--color-accent); }
+
+.backgroundControls {
+    position: fixed;
+    bottom: 6%;
+    right: 20px;
+    background: rgba(10, 22, 40, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.backgroundControls:hover {
+    border-color: rgba(100, 255, 218, 0.4);
+    box-shadow: 0 4px 25px rgba(100, 255, 218, 0.15);
+}
+
+.controlsTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.controlsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.controlItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.controlKey {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--color-accent);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    min-width: 60px;
+    text-align: center;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+}
+
+.controlDesc {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .backgroundControls {
+        bottom: 10px;
+        right: 10px;
+        padding: 0.75rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .controlsTitle {
+        font-size: 0.8rem;
+    }
+    
+    .controlItem {
+        font-size: 0.75rem;
+    }
+    
+    .controlKey {
+        min-width: 50px;
+        font-size: 0.7rem;
+    }
+    
+    .controlDesc {
+        font-size: 0.75rem;
+    }
+}

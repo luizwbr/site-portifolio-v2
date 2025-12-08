@@ -7,8 +7,6 @@ import styles from './SearchOverlay.module.css';
 const SearchOverlay = ({ 
     isOpen, 
     onClose, 
-    onResultsFound, 
-    unlockedIds,
     query,       // Novo
     setQuery,    // Novo
     results,     // Novo
@@ -21,16 +19,6 @@ const SearchOverlay = ({
             inputRef.current.focus();
         }
     }, [isOpen]);
-
-    // O useEffect de notificar o jogo continua aqui
-    useEffect(() => {
-        if (hasResults) {
-            const timer = setTimeout(() => {
-                onResultsFound(results);
-            }, 500);
-            return () => clearTimeout(timer);
-        }
-    }, [results, hasResults, onResultsFound]);
 
     if (!isOpen) return null;
 
@@ -47,7 +35,7 @@ const SearchOverlay = ({
                         ref={inputRef}
                         type="text"
                         className={styles.searchInput}
-                        placeholder="Pesquise..."
+                        placeholder="Digite sua busca..."
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                     />
@@ -56,19 +44,15 @@ const SearchOverlay = ({
                 <div className={styles.resultsList}>
                     {hasResults ? (
                         results.map(item => {
-                            // Verifica se este item específico já foi desbloqueado antes
-                            const isUnlocked = unlockedIds.includes(item.id);
-
                             return (
                                 <div key={item.id} className={styles.resultCard} style={{
                                     // Visual diferente se acabou de descobrir (opcional)
-                                    borderLeftColor: isUnlocked ? '#8a4fff' : '#ffffff' 
+                                    borderLeftColor: '#ffffff' 
                                 }}>
                                     <div className={styles.cardHeader}>
                                         <span className={styles.typeBadge}>
                                             {item.type}
                                             {/* Ícone indicando que já foi coletado */}
-                                            {isUnlocked && <FiCheckCircle style={{marginLeft: 8}} />}
                                         </span>
                                         {item.url && (
                                             <a href={item.url} target="_blank" rel="noopener noreferrer">

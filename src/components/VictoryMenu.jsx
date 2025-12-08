@@ -1,16 +1,18 @@
 // src/components/VictoryMenu.jsx
 import React from 'react';
-import { FiCode, FiCpu, FiUser } from 'react-icons/fi';
+import { FiCode, FiCpu, FiUser, FiX } from 'react-icons/fi';
 import styles from './VictoryMenu.module.css';
 import { ITEM_TYPES } from '../data/source';
 
-const VictoryMenu = ({ onCategorySelect }) => {
+const VictoryMenu = ({ onCategorySelect, onClose }) => {
     return (
         <div className={styles.victoryContainer}>
-            <h3 className={styles.victoryTitle}>🔓 Menu Desbloqueado!</h3>
+            <button className={styles.closeButton} onClick={onClose} title="Fechar menu">
+                <FiX />
+            </button>
+            <h3 className={styles.victoryTitle}>Menu</h3>
             <p className={styles.victoryText}>
-                🏆 Você conseguiu visualizar 100% do conteúdo!! <br/>
-                Acompanhe meu portifólio explorando rapidamente as categorias abaixo:
+                Acompanhe meu portfólio explorando rapidamente as categorias abaixo:
             </p>
             
             <div className={styles.buttonGrid}>
