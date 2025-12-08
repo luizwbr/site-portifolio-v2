@@ -6,7 +6,6 @@ import SpaceBackground from './components/SpaceBackground';
 import { useGame } from './hooks/useGame';
 import { useSearch } from './hooks/useSearch'; // Importe o search aqui também
 import { FiSearch, FiGithub, FiLinkedin, FiGlobe, FiMail, FiMousePointer } from 'react-icons/fi';
-import { Analytics } from "@vercel/analytics/next"
 import styles from './App.module.css';
 
 function App() {
@@ -113,8 +112,7 @@ function App() {
         results={results}
         hasResults={hasResults}
       />
-      <Analytics/>
-      
+           
       {!isMobile && (
         <div className={styles.backgroundControls}>
           <div className={styles.controlsTitle}>
