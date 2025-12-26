@@ -1,22 +1,34 @@
 /* src/index.css */
 :root {
-  --color-bg-main: linear-gradient(135deg, #0a1628 0%, #0d1b2a 50%, #1b263b 100%);
-  --color-bg-secondary: #0f1e2d99;
-  --color-bg-tertiary: #007386;
-  --color-text-primary: #e0f2fe;
-  --color-text-secondary: #bdcee5;
-  --color-accent: #06b6d4;
-  --color-accent-hover: #22d3ee;
-  --color-glow: #06b6d44d;
+  /* Usando o tema Cosmic Explorer */
+  --color-bg-main: var(--cosmic-deep-space);
+  --color-bg-secondary: var(--cosmic-nebula-dark);
+  --color-bg-tertiary: var(--cosmic-dark-matter);
+  --color-text-primary: var(--cosmic-starlight);
+  --color-text-secondary: var(--cosmic-stardust);
+  --color-accent: var(--cosmic-neon-cyan);
+  --color-accent-hover: var(--cosmic-stellar-blue);
+  --color-glow: rgba(0, 217, 255, 0.3);
   
   --font-main: 'Outfit', sans-serif;
   --font-heading: 'Montserrat', sans-serif;
+  
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   font-family: var(--font-main);
-  background: linear-gradient(135deg, #0a1628 0%, #0d1b2a 25%, #1b263b 75%, #0f2537 100%);
+  background: linear-gradient(135deg, 
+    var(--cosmic-void) 0%, 
+    var(--cosmic-deep-space) 25%, 
+    var(--cosmic-nebula-dark) 75%, 
+    var(--cosmic-starfield) 100%
+  );
   background-attachment: fixed;
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
@@ -33,8 +45,8 @@ body::before {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(ellipse at 20% 30%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(34, 211, 238, 0.06) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 30%, rgba(0, 217, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(0, 132, 255, 0.06) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
 }

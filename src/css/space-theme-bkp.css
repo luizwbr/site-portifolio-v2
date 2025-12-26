@@ -1,0 +1,204 @@
+/**
+ * Cosmic Explorer Color Palette - CSS Variables
+ * Use estas variáveis em seus projetos web
+ */
+
+:root {
+  /* === Backgrounds === */
+  --cosmic-deep-space: #0B0E1A;
+  --cosmic-void: #070A14;
+  --cosmic-nebula-dark: #0F1420;
+  --cosmic-starfield: #141925;
+  --cosmic-dark-matter: #1A1F30;
+  
+  /* === Primary Blues === */
+  --cosmic-neon-cyan: #00D9FF;
+  --cosmic-blue: #00A3CC;
+  --cosmic-stellar-blue: #0084FF;
+  
+  /* === Accent Colors === */
+  --cosmic-solar-orange: #FF6B35;
+  --cosmic-sunburst-orange: #FFA500;
+  --cosmic-purple: #7B2CBF;
+  --cosmic-nebula-purple: #9D4EDD;
+  --cosmic-aurora-violet: #C77DFF;
+  
+  /* === Success/Green === */
+  --cosmic-nebula-green: #00FF88;
+  --cosmic-nebula-green-bright: #66FFAA;
+  
+  /* === Error/Red === */
+  --cosmic-supernova-red: #FF4444;
+  --cosmic-supernova-red-bright: #FF6B6B;
+  
+  /* === Text Colors === */
+  --cosmic-starlight: #E0E7FF;
+  --cosmic-stardust: #B8C5E0;
+  --cosmic-gray: #5A6B8C;
+  --cosmic-meteor-gray: #2A3550;
+  
+  /* === Highlights === */
+  --cosmic-galaxy-blue: #1E3A5F;
+  --cosmic-galaxy-blue-alpha: #1E3A5F80;
+  --cosmic-starfield-blue: #1A2540;
+}
+
+/* === Exemplo de Uso === */
+
+body {
+  background-color: var(--cosmic-deep-space);
+  color: var(--cosmic-starlight);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.button-primary {
+  background-color: var(--cosmic-neon-cyan);
+  color: var(--cosmic-deep-space);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+  background-color: var(--cosmic-stellar-blue);
+}
+
+.button-accent {
+  background-color: var(--cosmic-solar-orange);
+  color: white;
+}
+
+.card {
+  background-color: var(--cosmic-nebula-dark);
+  border: 1px solid var(--cosmic-dark-matter);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  border-color: var(--cosmic-neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+}
+
+.text-primary {
+  color: var(--cosmic-neon-cyan);
+}
+
+.text-accent {
+  color: var(--cosmic-solar-orange);
+}
+
+.text-success {
+  color: var(--cosmic-nebula-green);
+}
+
+.text-error {
+  color: var(--cosmic-supernova-red);
+}
+
+.text-muted {
+  color: var(--cosmic-gray);
+}
+
+.link {
+  color: var(--cosmic-neon-cyan);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: var(--cosmic-nebula-purple);
+}
+
+.code-block {
+  background-color: var(--cosmic-void);
+  border-left: 3px solid var(--cosmic-neon-cyan);
+  padding: 16px;
+  border-radius: 4px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  color: var(--cosmic-nebula-green);
+}
+
+.alert-error {
+  background-color: rgba(255, 68, 68, 0.1);
+  border: 1px solid var(--cosmic-supernova-red);
+  color: var(--cosmic-supernova-red-bright);
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.alert-warning {
+  background-color: rgba(255, 165, 0, 0.1);
+  border: 1px solid var(--cosmic-sunburst-orange);
+  color: var(--cosmic-sunburst-orange);
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.alert-success {
+  background-color: rgba(0, 255, 136, 0.1);
+  border: 1px solid var(--cosmic-nebula-green);
+  color: var(--cosmic-nebula-green-bright);
+  padding: 12px;
+  border-radius: 6px;
+}
+
+/* === Gradientes Cósmicos === */
+
+.gradient-cosmic {
+  background: linear-gradient(
+    135deg,
+    var(--cosmic-deep-space) 0%,
+    var(--cosmic-nebula-dark) 50%,
+    var(--cosmic-galaxy-blue) 100%
+  );
+}
+
+.gradient-nebula {
+  background: linear-gradient(
+    to right,
+    var(--cosmic-nebula-purple),
+    var(--cosmic-neon-cyan)
+  );
+}
+
+.gradient-energy {
+  background: linear-gradient(
+    45deg,
+    var(--cosmic-solar-orange),
+    var(--cosmic-sunburst-orange)
+  );
+}
+
+/* === Efeitos de Brilho === */
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+.glow-orange {
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
+}
+
+/* === Animações === */
+
+@keyframes pulse-cyan {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
+  }
+}
+
+.pulse-animation {
+  animation: pulse-cyan 2s infinite;
+}

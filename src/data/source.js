@@ -8,13 +8,6 @@ export const ITEM_TYPES = {
 
 export const portfolioData = [
     {
-        id: 'bio-summary',
-        type: ITEM_TYPES.BIO,
-        title: 'Resumo Profissional',
-        description: 'Graduado em Sistemas de Informação, pós-graduado em Engenharia de Software com ênfase em Testes, com 15 anos de experiência na área de Tecnologia da Informação (TI), atuando em pequenas e grandes empresas nacionais e multinacionais.',
-        keywords: ['sobre', 'perfil', 'carreira', 'senior']
-    },
-    {
         id: 'exp-ame',
         type: ITEM_TYPES.BIO,
         title: 'Desenvolvedor de software Senior (atual)',
@@ -25,8 +18,8 @@ export const portfolioData = [
     {
         id: 'exp-maxicon',
         type: ITEM_TYPES.BIO,
-        title: 'Desenvolvedor Front End Angular [hibrido]',
-        description: 'Atuação no setor de Pesquisa e Desenvolvimento na Maxicon (Toledo-PR), no projeto de modernização do ERP (Oracle Forms → AngularJS), criando componentes e automações, documentando processos, apoiando a equipe e desenvolvendo POCs para otimizar o desenvolvimento.',
+        title: 'Desenvolvedor Front End Angular',
+        description: 'Atuação no setor de Pesquisa e Desenvolvimento na Maxicon (Toledo-PR), no projeto de modernização do ERP (Oracle Forms -> AngularJS), criando componentes e automações, documentando processos, apoiando a equipe e desenvolvendo POCs para otimizar o desenvolvimento.',
         tags: ['Maxicon', 'AngularJS', 'Oracle Forms', 'ERP'],
         keywords: ['backend', 'frontend', 'banco de dados', 'híbrido']
     },
@@ -87,20 +80,11 @@ export const portfolioData = [
         keywords: ['infraestrutura', 'banco de dados', 'nuvem']
     },
     {
-        id: 'proj-weber-site',
-        type: ITEM_TYPES.PROJECT,
-        title: 'Weber.eti.br (Este site)',
-        description: 'Portfólio desenvolvido em React com implementação de motor de busca client-side (offline) usando Fuse.js para indexar competências e histórico.',
-        tags: ['React', 'Vite', 'Fuse.js'],
-        url: 'https://github.com/luizwbr/personal-website',
-        keywords: ['site pessoal', 'react']
-    },
-    {
         id: 'proj-yaml2env',
         type: ITEM_TYPES.PROJECT,
         title: 'yaml-2-environment',
         description: 'Biblioteca Node.js que carrega um arquivo `.env.yml` e converte seus valores em variáveis de ambiente, com suporte a namespace, codificação personalizada e caminho customizável.',
-        tags: ['Node.js', 'YAML', 'environment variables'],
+        tags: [],
         url: 'https://github.com/luizwbr/yaml-2-environment',
         keywords: ['env', 'configuração', 'automação', 'github']
     },
@@ -109,7 +93,7 @@ export const portfolioData = [
         type: ITEM_TYPES.PROJECT,
         title: 'Chrome Input Highlight',
         description: 'Extensão para navegador que destaca automaticamente entradas de texto em páginas web, facilitando testes exploratórios e interação rápida.',
-        tags: ['Chrome Extension', 'JavaScript', 'Browser DevTools'],
+        tags: [],
         url: 'https://github.com/luizwbr/chrome-input-hightlight',
         keywords: ['teste exploratório', 'input highlight', 'automação', 'github']
     },
@@ -118,19 +102,8 @@ export const portfolioData = [
         type: ITEM_TYPES.PROJECT,
         title: 'Ubuntu Workstation Setup',
         description: 'Script de configuração para estação de desenvolvimento baseada em Ubuntu, instalando ferramentas como Git, VSCode, Node.js, Docker, entre outras.',
-        tags: ['Shell', 'Automation', 'Ubuntu', 'Development Setup'],
+        tags: [],
         url: 'https://github.com/luizwbr/ubuntu-workstation',
         keywords: ['workstation', 'setup', 'dev environment', 'github']
-    },
-    {
-        id: 'palestras-tech-talks',
-        type: ITEM_TYPES.PROJECT,
-        title: 'Palestras e Tech Talks [slideshare]',
-        description: 'Palestras e apresentações sobre desenvolvimento web, e-commerce e boas práticas de programação, disponíveis no Slideshare.',
-        tags: ['Palestras', 'E-commerce', 'Slides'],
-        url: 'https://pt.slideshare.net/luizwbr',
-        keywords: ['slideshare', 'palestras', 'E-commerce']
-    },
-
-
+    }
 ];

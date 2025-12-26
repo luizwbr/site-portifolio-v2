@@ -1,0 +1,67 @@
+/* src/components/ShareButton.module.css */
+.shareContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.shareButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(0, 217, 255, 0.1);
+    border: 1px solid var(--cosmic-neon-cyan);
+    color: var(--cosmic-neon-cyan);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.shareButton:hover {
+    background: rgba(0, 217, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.shareMenu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: rgba(10, 22, 40, 0.98);
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    border-radius: 8px;
+    padding: 0.5rem;
+    min-width: 180px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.shareOption {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.shareOption:hover {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+    .shareMenu {
+        left: 0;
+        right: auto;
+    }
+}

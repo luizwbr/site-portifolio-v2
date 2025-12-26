@@ -1,0 +1,221 @@
+/* src/components/BlogSection.module.css */
+.blogSection {
+    padding: 6rem 0 4rem 0;
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+.closeButton {
+    position: fixed;
+    top: 90px;
+    right: 2rem;
+    background: rgba(100, 255, 218, 0.1);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.closeButton:hover {
+    background: var(--color-accent);
+    color: #0a1628;
+    transform: rotate(90deg);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.titleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.icon {
+    color: var(--color-accent);
+}
+
+.sectionTitle {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(135deg, var(--cosmic-neon-cyan) 0%, var(--cosmic-stellar-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.sectionSubtitle {
+    font-size: 1.1rem;
+    color: var(--cosmic-stardust);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tagsFilter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filterLabel {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+.tagsList {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.filterTag {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--color-text-secondary);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filterTag:hover {
+    background: rgba(100, 255, 218, 0.2);
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.filterTagActive {
+    background: var(--color-accent);
+    color: #0a1628;
+    border-color: var(--color-accent);
+}
+
+.filterTagActive:hover {
+    background: var(--color-accent);
+    color: #0a1628;
+}
+
+.clearFilter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 100, 100, 0.1);
+    color: #ff6464;
+    border: 1px solid rgba(255, 100, 100, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.clearFilter:hover {
+    background: rgba(255, 100, 100, 0.2);
+    border-color: #ff6464;
+}
+
+.filterInfo {
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.filterInfo strong {
+    color: var(--color-accent);
+}
+
+.articlesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+}
+
+.clearFilterButton {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(0, 217, 255, 0.1);
+    border: 1px solid var(--cosmic-neon-cyan);
+    color: var(--cosmic-neon-cyan);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.clearFilterButton:hover {
+    background: var(--cosmic-neon-cyan);
+    color: var(--cosmic-deep-space);
+}
+
+@media (max-width: 768px) {
+    .blogSection {
+        padding: 5rem 0 3rem 0;
+    }
+
+    .closeButton {
+        top: 75px;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+    }
+
+    .header {
+        margin-bottom: 2rem;
+    }
+
+    .titleContainer {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .sectionSubtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .tagsFilter {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 1rem;
+    }
+
+    .articlesGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .articlesGrid {
+        grid-template-columns: 1fr;
+    }
+}

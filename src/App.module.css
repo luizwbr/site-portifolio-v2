@@ -1,12 +1,18 @@
 /* src/App.module.css */
 .heroSection {
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     position: relative;
     z-index: 1;
+    padding-top: 70px; /* Espaço para o menu fixo */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.heroSection.hidden {
+    display: none;
 }
 
 .greeting {
@@ -21,11 +27,15 @@
     font-weight: 800;
     margin: 0;
     line-height: 1.1;
+    background: linear-gradient(135deg, var(--cosmic-neon-cyan) 0%, var(--cosmic-stellar-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .subtitle {
     font-size: clamp(1.5rem, 3vw, 2.5rem);
-    color: var(--color-text-secondary);
+    color: var(--cosmic-stardust);
     margin: 0.5rem 0 2rem 0;
 }
 
@@ -41,21 +51,21 @@
     align-items: center;
     gap: 10px;
     padding: 1rem 2rem;
-    border: 1px solid var(--color-accent);
-    color: #0a1628;
+    border: 1px solid var(--cosmic-neon-cyan);
+    color: var(--cosmic-deep-space);
     font-size: 1.1rem;
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
-    box-shadow: 0 4px 15px var(--color-glow);
+    background: linear-gradient(135deg, var(--cosmic-neon-cyan) 0%, var(--cosmic-stellar-blue) 100%);
+    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.4);
 }
 
 .ctaButton:hover {
-    background: linear-gradient(135deg, var(--color-accent-hover) 0%, var(--color-accent) 100%);
-    color: #0a1628;
-    box-shadow: 0 6px 25px var(--color-glow), 0 0 40px var(--color-glow);
+    background: linear-gradient(135deg, var(--cosmic-stellar-blue) 0%, var(--cosmic-neon-cyan) 100%);
+    color: var(--cosmic-deep-space);
+    box-shadow: 0 6px 25px rgba(0, 217, 255, 0.6), 0 0 40px rgba(0, 217, 255, 0.3);
     transform: translateY(-2px);
 }
 
@@ -65,8 +75,8 @@
     gap: 10px;
     padding: 1rem 1rem;
     background-color: transparent;
-    border: 0px solid var(--color-accent);
-    color: var(--color-accent);
+    border: 0px solid var(--cosmic-neon-cyan);
+    color: var(--cosmic-neon-cyan);
     font-size: 1rem;
     font-weight: 600;
     border-radius: 8px;
@@ -75,36 +85,94 @@
 }
 
 .ignoreButton:hover {
-    color: var(--color-accent-hover);
-    box-shadow: 0 0 20px var(--color-glow);
+    color: var(--cosmic-stellar-blue);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
 }
 
 .footer {
     margin-top: auto;
     padding: 2rem 0;
-    border-top: 1px solid var(--color-bg-secondary);
+    border-top: 1px solid var(--cosmic-dark-matter);
     display: flex;
     gap: 1.5rem;
     position: relative;
     z-index: 1;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .footerLink {
-    color: var(--color-text-secondary);
+    color: var(--cosmic-stardust);
     font-size: 1.5rem;
+    transition: color 0.3s ease;
 }
-.footerLink:hover { color: var(--color-accent); }
+
+.footerLink:hover { 
+    color: var(--cosmic-neon-cyan); 
+}
+
 .emailLink {
     padding-left: 10px;
     padding-top: 4px;
-    color: var(--color-text-secondary);
+    color: var(--cosmic-stardust);
     font-size: 1rem;
+    transition: color 0.3s ease;
 }
-.emailLink:hover { color: var(--color-accent); }
+
+.emailLink:hover { 
+    color: var(--cosmic-neon-cyan); 
+}
+
+.themeCredit {
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: var(--cosmic-gray);
+}
+
+.themeCreditLink {
+    color: var(--cosmic-neon-cyan);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.themeCreditLink:hover {
+    color: var(--cosmic-stellar-blue);
+}
+
+.toggleControlsButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--cosmic-nebula-dark);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--cosmic-neon-cyan);
+    border-radius: 50%;
+    color: var(--cosmic-neon-cyan);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.toggleControlsButton:hover {
+    background: var(--cosmic-starfield);
+    border-color: var(--cosmic-stellar-blue);
+    box-shadow: 0 4px 20px rgba(0, 217, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.toggleControlsButton:active {
+    transform: translateY(0);
+}
 
 .backgroundControls {
     position: fixed;
-    bottom: 6%;
+    bottom: 80px;
     right: 20px;
     background: rgba(10, 22, 40, 0.85);
     backdrop-filter: blur(10px);
@@ -163,6 +231,10 @@
 }
 
 @media (max-width: 768px) {
+    .heroSection {
+        padding-top: 60px; /* Ajuste para menu mobile menor */
+    }
+
     .backgroundControls {
         bottom: 10px;
         right: 10px;
