@@ -23,6 +23,20 @@
 .logo {
     display: flex;
     align-items: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.logoImage {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logoImage:hover {
+    transform: scale(1.1);
 }
 
 .logoText {

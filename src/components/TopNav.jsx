@@ -31,9 +31,9 @@ const TopNav = ({ onNavigate }) => {
   return (
     <nav className={styles.topNav}>
       <div className={styles.navContainer}>
-        <div className={styles.logo}>
-          <span className={styles.logoText}>LW</span>
-        </div>
+        <button className={styles.logo} onClick={() => handleClick('home')}>
+          <img src="/icon.svg" alt="Logo" className={styles.logoImage} />
+        </button>
         
         <ul className={styles.navMenu}>
           {menuItems.map((item) => (

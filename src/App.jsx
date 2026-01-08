@@ -83,7 +83,7 @@ function App() {
           Atuo como programador desde 2009. <br/>         
           Natural do Paraná, Brasil, tenho mais de 15 anos de experiência em backend e frontend.<br/>
 <br/>
-          Explore meu portfólio, veja meus projetos e trajetória profissional.  
+          Fique à vontade para explorar meus <a href="#projetos" onClick={(e) => { e.preventDefault(); handleQuickAccess('projetos'); }}>projetos</a>, saber mais <a href="#sobre" onClick={(e) => { e.preventDefault(); handleQuickAccess('sobre'); }}>sobre mim</a> ou ler meus artigos no <a href="#blog" onClick={(e) => { e.preventDefault(); handleQuickAccess('blog'); }}>blog</a>.<br/>
         </p>
       </main>
 
