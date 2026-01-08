@@ -105,5 +105,41 @@ export const portfolioData = [
         tags: [],
         url: 'https://github.com/luizwbr/ubuntu-workstation',
         keywords: ['workstation', 'setup', 'dev environment', 'github']
+    },
+    {
+        id: 'proj-github-infographic',
+        type: ITEM_TYPES.PROJECT,
+        title: 'Repositórios GitHub - Repositórios em Alta',
+        description: 'Ferramenta que gera infográficos personalizados com estatísticas do GitHub, permitindo visualizações atrativas do perfil e atividades do usuário.',
+        tags: [],
+        url: 'https://github.com/luizwbr/github-infographic',
+        keywords: ['github', 'infográfico', 'estatísticas', 'github']
+    },
+    {
+        id: 'proj-design-patterns-examples',
+        type: ITEM_TYPES.PROJECT,
+        title: 'Design Patterns Examples',
+        description: 'Repositório com exemplos práticos de diversos padrões de design, facilitando o aprendizado e aplicação desses conceitos em projetos reais.',
+        url: "https://github.com/luizwbr/design-patterns-examples",
+        tags: [],
+        keywords: ['design patterns', 'exemplos', 'aprendizado', 'github'],
+    },
+    {
+        id: 'proj-cosmic-explorer-theme',
+        type: ITEM_TYPES.PROJECT,
+        title: 'Cosmic Explorer Theme',
+        description: 'Um tema escuro para VS Code inspirado no espaço sideral, com cores vibrantes de azuis neon, laranjas energéticos e tons cósmicos.',
+        tags: [],
+        url: 'https://github.com/luizwbr/cosmic-explorer-theme',
+        keywords: ['tema', 'vscode', 'cosmic explorer', 'github']
+    },
+    {
+        id: 'proj-nools-rust',
+        type: ITEM_TYPES.PROJECT,
+        title: 'Nools Rust',
+        description: 'Implementação da engine de regras Nools em Rust, oferecendo alta performance e segurança para aplicações que necessitam de processamento complexo de regras de negócio.',
+        tags: [],
+        url: 'https://github.com/luizwbr/nools-rust',
+        keywords: ['nools', 'rust', 'engine de regras', 'github']
     }
 ];
