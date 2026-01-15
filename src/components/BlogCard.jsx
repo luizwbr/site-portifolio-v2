@@ -1,12 +1,16 @@
 // src/components/BlogCard.jsx
 import React from 'react';
 import { FiClock, FiCalendar, FiArrowRight } from 'react-icons/fi';
+import { useLanguage } from '../i18n/LanguageContext';
 import styles from './BlogCard.module.css';
 
 const BlogCard = ({ article, onClick, onTagClick }) => {
+  const { currentLanguage } = useLanguage();
+  
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('pt-BR', { 
+    const locale = currentLanguage === 'pt-BR' ? 'pt-BR' : 'en-US';
+    return date.toLocaleDateString(locale, { 
       year: 'numeric', 
       month: 'long', 
       day: 'numeric' 
@@ -45,14 +49,14 @@ const BlogCard = ({ article, onClick, onTagClick }) => {
               key={index} 
               className={styles.tag}
               onClick={(e) => handleTagClick(e, tag)}
-              title={`Filtrar por ${tag}`}
+              title={currentLanguage === 'pt-BR' ? `Filtrar por ${tag}` : `Filter by ${tag}`}
             >
               {tag}
             </span>
           ))}
         </div>
         <button className={styles.readMore}>
-          Ler mais <FiArrowRight size={16} />
+          {currentLanguage === 'pt-BR' ? 'Ler mais' : 'Read more'} <FiArrowRight size={16} />
         </button>
       </div>
     </article>

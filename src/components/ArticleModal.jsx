@@ -2,10 +2,13 @@
 import React, { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import ShareButton from './ShareButton';
+import { useLanguage } from '../i18n/LanguageContext';
 import { FiX, FiClock, FiCalendar } from 'react-icons/fi';
 import styles from './ArticleModal.module.css';
 
 const ArticleModal = ({ article, onClose, onTagClick }) => {
+  const { currentLanguage, t } = useLanguage();
+  
   useEffect(() => {
     // Prevent body scroll when modal is open
     document.body.style.overflow = 'hidden';
@@ -24,7 +27,8 @@ const ArticleModal = ({ article, onClose, onTagClick }) => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('pt-BR', { 
+    const locale = currentLanguage === 'pt-BR' ? 'pt-BR' : 'en-US';
+    return date.toLocaleDateString(locale, { 
       year: 'numeric', 
       month: 'long', 
       day: 'numeric' 
@@ -44,12 +48,12 @@ const ArticleModal = ({ article, onClose, onTagClick }) => {
     }
   };
 
-  const articleUrl = `${window.location.origin}${window.location.pathname}#artigo/${article.slug}`;
+  const articleUrl = `${window.location.origin}${window.location.pathname}#article/${article.slug}`;
 
   return (
     <div className={styles.modalBackdrop} onClick={handleBackdropClick}>
       <div className={styles.modalContent}>
-        <button className={styles.closeButton} onClick={onClose} aria-label="Fechar">
+        <button className={styles.closeButton} onClick={onClose} aria-label={t.blog.close}>
           <FiX size={24} />
         </button>
 
@@ -75,7 +79,7 @@ const ArticleModal = ({ article, onClose, onTagClick }) => {
                     key={index} 
                     className={styles.tag}
                     onClick={() => handleTagClick(tag)}
-                    title={`Filtrar por ${tag}`}
+                    title={currentLanguage === 'pt-BR' ? `Filtrar por ${tag}` : `Filter by ${tag}`}
                   >
                     {tag}
                   </span>

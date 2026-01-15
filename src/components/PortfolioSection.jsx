@@ -1,11 +1,16 @@
 // src/components/PortfolioSection.jsx
 import React from 'react';
 import PortfolioCard from './PortfolioCard';
-import { portfolioData, ITEM_TYPES } from '../data/source';
+import { getPortfolioData, getItemTypes } from '../data/source';
+import { useLanguage } from '../i18n/LanguageContext';
 import { FiFolder, FiTool, FiUser, FiX } from 'react-icons/fi';
 import styles from './PortfolioSection.module.css';
 
 const PortfolioSection = ({ filterType, onClose }) => {
+  const { t, currentLanguage } = useLanguage();
+  const portfolioData = getPortfolioData(currentLanguage);
+  const ITEM_TYPES = getItemTypes(currentLanguage);
+  
   const filteredItems = portfolioData.filter(item => item.type === filterType);
 
   const getIcon = () => {
@@ -24,11 +29,11 @@ const PortfolioSection = ({ filterType, onClose }) => {
   const getTitle = () => {
     switch (filterType) {
       case ITEM_TYPES.PROJECT:
-        return 'Projetos';
+        return t.projects.title;
       case ITEM_TYPES.SKILL:
-        return 'Competências';
+        return t.about.technicalSkills;
       case ITEM_TYPES.BIO:
-        return 'Biografia & Experiência';
+        return t.about.professionalPath;
       default:
         return 'Portfolio';
     }
@@ -39,22 +44,22 @@ const PortfolioSection = ({ filterType, onClose }) => {
       case ITEM_TYPES.PROJECT:
         return (
           <>
-            Veja alguns projetos que estive trabalhando recentemente. Mais projetos no meu{' '}
+            {t.projects.subtitle}{' '}
             <a 
               href="https://github.com/luizwbr" 
               target="_blank" 
               rel="noopener noreferrer"
               className={styles.githubLink}
             >
-              GitHub
+              {t.projects.github}
             </a>
             .
           </>
         );
       case ITEM_TYPES.SKILL:
-        return 'Tecnologias e habilidades que domino';
+        return t.about.technicalSkills;
       case ITEM_TYPES.BIO:
-        return 'Minha trajetória profissional e experiências';
+        return t.about.professionalPath;
       default:
         return '';
     }
@@ -63,7 +68,7 @@ const PortfolioSection = ({ filterType, onClose }) => {
   return (
     <>
       <section className={styles.portfolioSection} id="portfolio">
-        <button className={styles.closeButton} onClick={onClose} aria-label="Fechar">
+        <button className={styles.closeButton} onClick={onClose} aria-label={t.projects.close}>
           <FiX size={24} />
         </button>
 
@@ -88,7 +93,7 @@ const PortfolioSection = ({ filterType, onClose }) => {
 
         {filteredItems.length === 0 && (
           <div className={styles.emptyState}>
-            <p>Nenhum item encontrado.</p>
+            <p>{t.projects.noItems}</p>
           </div>
         )}
       </section>

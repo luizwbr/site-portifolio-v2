@@ -1,0 +1,42 @@
+/* src/components/LanguageToggle.module.css */
+.languageToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.3);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.languageToggle:hover {
+  background: rgba(100, 255, 218, 0.2);
+  border-color: rgba(100, 255, 218, 0.5);
+  transform: translateY(-2px);
+}
+
+.flag {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.label {
+  font-family: 'Fira Code', monospace;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .languageToggle {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+  
+  .flag {
+    font-size: 1rem;
+  }
+}

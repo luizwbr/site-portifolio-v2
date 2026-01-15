@@ -1,14 +1,18 @@
 // src/components/TopNav.jsx
 import React from 'react';
 import { FiHome, FiFolder, FiTool, FiUser, FiBook } from 'react-icons/fi';
+import { useLanguage } from '../i18n/LanguageContext';
+import LanguageToggle from './LanguageToggle';
 import styles from './TopNav.module.css';
 
 const TopNav = ({ onNavigate }) => {
+  const { t } = useLanguage();
+  
   const menuItems = [
-    { label: 'Home', icon: FiHome, action: 'home' },
-    { label: 'Projetos', icon: FiFolder, action: 'projetos' },
-    { label: 'Blog', icon: FiBook, action: 'blog' },
-    { label: 'Sobre', icon: FiUser, action: 'sobre' },
+    { label: t.nav.home, icon: FiHome, action: 'home' },
+    { label: t.nav.projects, icon: FiFolder, action: 'projetos' },
+    { label: t.nav.blog, icon: FiBook, action: 'blog' },
+    { label: t.nav.about, icon: FiUser, action: 'sobre' },
   ];
 
   const handleClick = (action) => {
@@ -48,6 +52,8 @@ const TopNav = ({ onNavigate }) => {
             </li>
           ))}
         </ul>
+        
+        <LanguageToggle />
       </div>
     </nav>
   );

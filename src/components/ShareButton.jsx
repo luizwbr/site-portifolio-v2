@@ -1,9 +1,11 @@
 // src/components/ShareButton.jsx
 import React, { useState } from 'react';
 import { FiShare2, FiTwitter, FiLinkedin, FiFacebook, FiLink, FiCheck } from 'react-icons/fi';
+import { useLanguage } from '../i18n/LanguageContext';
 import styles from './ShareButton.module.css';
 
 const ShareButton = ({ article, url }) => {
+  const { t, currentLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -31,10 +33,10 @@ const ShareButton = ({ article, url }) => {
       <button 
         className={styles.shareButton}
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Compartilhar artigo"
+        aria-label={currentLanguage === 'pt-BR' ? 'Compartilhar artigo' : 'Share article'}
       >
         <FiShare2 size={18} />
-        Compartilhar
+        {t.blog.share}
       </button>
 
       {isOpen && (
@@ -44,7 +46,7 @@ const ShareButton = ({ article, url }) => {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.shareOption}
-            title="Compartilhar no Twitter"
+            title={`${t.blog.shareOn} Twitter`}
           >
             <FiTwitter size={18} />
             Twitter
@@ -55,7 +57,7 @@ const ShareButton = ({ article, url }) => {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.shareOption}
-            title="Compartilhar no LinkedIn"
+            title={`${t.blog.shareOn} LinkedIn`}
           >
             <FiLinkedin size={18} />
             LinkedIn
@@ -66,7 +68,7 @@ const ShareButton = ({ article, url }) => {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.shareOption}
-            title="Compartilhar no Facebook"
+            title={`${t.blog.shareOn} Facebook`}
           >
             <FiFacebook size={18} />
             Facebook
@@ -75,10 +77,13 @@ const ShareButton = ({ article, url }) => {
           <button
             onClick={handleCopyLink}
             className={styles.shareOption}
-            title="Copiar link"
+            title={currentLanguage === 'pt-BR' ? 'Copiar link' : 'Copy link'}
           >
             {copied ? <FiCheck size={18} /> : <FiLink size={18} />}
-            {copied ? 'Copiado!' : 'Copiar link'}
+            {copied 
+              ? (currentLanguage === 'pt-BR' ? 'Copiado!' : 'Copied!') 
+              : (currentLanguage === 'pt-BR' ? 'Copiar link' : 'Copy link')
+            }
           </button>
         </div>
       )}

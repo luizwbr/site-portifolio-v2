@@ -2,44 +2,62 @@
 import React, { useState, useEffect } from 'react';
 import BlogCard from './BlogCard';
 import ArticleModal from './ArticleModal';
-import { getPublishedArticles, getArticleBySlug, getArticlesByTag, getAllTags } from '../data/articles';
+import { 
+  getPublishedArticlesI18n, 
+  getArticleBySlugI18n, 
+  getArticlesByTagI18n, 
+  getAllTagsI18n 
+} from '../data/articles';
+import { useLanguage } from '../i18n/LanguageContext';
 import { FiBook, FiX } from 'react-icons/fi';
 import styles from './BlogSection.module.css';
 
 const BlogSection = ({ showCloseButton, onClose }) => {
+  const { t, currentLanguage } = useLanguage();
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [selectedTag, setSelectedTag] = useState(null);
-  const allArticles = getPublishedArticles();
-  const [articles, setArticles] = useState(allArticles);
-  const allTags = getAllTags();
+  const [articles, setArticles] = useState([]);
+  const [allTags, setAllTags] = useState([]);
+
+  // Atualiza artigos e tags quando o idioma muda
+  useEffect(() => {
+    const updatedArticles = getPublishedArticlesI18n(currentLanguage);
+    const updatedTags = getAllTagsI18n(currentLanguage);
+    setArticles(updatedArticles);
+    setAllTags(updatedTags);
+    setSelectedTag(null); // Limpa filtro de tag ao mudar idioma
+  }, [currentLanguage]);
 
   const handleTagFilter = (tag) => {
     if (selectedTag === tag) {
       // Se já está filtrado por essa tag, remove o filtro
       setSelectedTag(null);
-      setArticles(allArticles);
+      setArticles(getPublishedArticlesI18n(currentLanguage));
       window.location.hash = '';
     } else {
       setSelectedTag(tag);
-      setArticles(getArticlesByTag(tag));
+      setArticles(getArticlesByTagI18n(tag, currentLanguage));
       window.location.hash = `tag/${tag}`;
     }
   };
 
   const clearFilter = () => {
     setSelectedTag(null);
-    setArticles(allArticles);
+    setArticles(getPublishedArticlesI18n(currentLanguage));
     window.location.hash = '';
   };
 
   useEffect(() => {
     // Verificar se há um artigo na URL
     const hash = window.location.hash;
-    if (hash.startsWith('#artigo/')) {
-      const slug = hash.replace('#artigo/', '');
-      const article = getArticleBySlug(slug);
+    if (hash.startsWith('#article/')) {
+      const slug = hash.replace('#article/', '');
+      const article = getArticleBySlugI18n(slug, currentLanguage);
       if (article) {
         setSelectedArticle(article);
+      } else {
+        // Se o artigo não existe no idioma atual, fecha o modal
+        setSelectedArticle(null);
       }
     }
     // Verificar se há uma tag na URL
@@ -48,11 +66,11 @@ const BlogSection = ({ showCloseButton, onClose }) => {
       handleTagFilter(tag);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [currentLanguage]);
 
   const handleArticleClick = (article) => {
     setSelectedArticle(article);
-    window.location.hash = `artigo/${article.slug}`;
+    window.location.hash = `article/${article.slug}`;
   };
 
   const handleCloseModal = () => {
@@ -63,7 +81,7 @@ const BlogSection = ({ showCloseButton, onClose }) => {
   return (
     <section className={styles.blogSection} id="blog">
       {showCloseButton && (
-        <button className={styles.closeButton} onClick={onClose} aria-label="Fechar">
+        <button className={styles.closeButton} onClick={onClose} aria-label={t.blog.close}>
           <FiX size={24} />
         </button>
       )}
@@ -71,16 +89,16 @@ const BlogSection = ({ showCloseButton, onClose }) => {
       <div className={styles.header}>
         <div className={styles.titleContainer}>
           <FiBook className={styles.icon} size={32} />
-          <h2 className={styles.sectionTitle}>Artigos</h2>
+          <h2 className={styles.sectionTitle}>{t.blog.title}</h2>
         </div>
         <p className={styles.sectionSubtitle}>
-          Compartilhando conhecimentos e experiências sobre desenvolvimento de software
+          {t.blog.subtitle}
         </p>
       </div>
 
       {/* Filtros de Tags */}
       <div className={styles.tagsFilter}>
-        <span className={styles.filterLabel}>Filtrar por:</span>
+        <span className={styles.filterLabel}>{t.blog.filterBy}</span>
         <div className={styles.tagsList}>
           {allTags.map((tag) => (
             <button
@@ -94,14 +112,17 @@ const BlogSection = ({ showCloseButton, onClose }) => {
         </div>
         {selectedTag && (
           <button className={styles.clearFilter} onClick={clearFilter}>
-            <FiX size={16} /> Limpar filtro
+            <FiX size={16} /> {t.blog.clearFilter}
           </button>
         )}
       </div>
 
       {selectedTag && (
         <div className={styles.filterInfo}>
-          Mostrando {articles.length} artigo{articles.length !== 1 ? 's' : ''} com a tag <strong>{selectedTag}</strong>
+          {currentLanguage === 'pt-BR' 
+            ? `Mostrando ${articles.length} artigo${articles.length !== 1 ? 's' : ''} com a tag` 
+            : `Showing ${articles.length} article${articles.length !== 1 ? 's' : ''} with tag`
+          } <strong>{selectedTag}</strong>
         </div>
       )}
 
@@ -118,9 +139,13 @@ const BlogSection = ({ showCloseButton, onClose }) => {
 
       {articles.length === 0 && (
         <div className={styles.emptyState}>
-          <p>Nenhum artigo encontrado com essa tag.</p>
+          <p>
+            {currentLanguage === 'pt-BR' 
+              ? 'Nenhum artigo encontrado com essa tag.' 
+              : 'No articles found with this tag.'}
+          </p>
           <button className={styles.clearFilterButton} onClick={clearFilter}>
-            Ver todos os artigos
+            {currentLanguage === 'pt-BR' ? 'Ver todos os artigos' : 'View all articles'}
           </button>
         </div>
       )}

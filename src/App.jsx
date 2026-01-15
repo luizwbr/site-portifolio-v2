@@ -5,11 +5,15 @@ import BlogSection from './components/BlogSection';
 import PortfolioSection from './components/PortfolioSection';
 import AboutSection from './components/AboutSection';
 import TopNav from './components/TopNav';
-import { ITEM_TYPES } from './data/source';
-import { FiGithub, FiLinkedin, FiGlobe, FiMail, FiMousePointer } from 'react-icons/fi';
+import { getItemTypes } from './data/source';
+import { useLanguage } from './i18n/LanguageContext';
+import { FiGithub, FiLinkedin, FiGlobe, FiMail, FiMousePointer, FiImage } from 'react-icons/fi';
 import styles from './App.module.css';
 
 function App() {
+  const { t, currentLanguage } = useLanguage();
+  const ITEM_TYPES = getItemTypes(currentLanguage);
+  
   // Verifica hash na URL ao carregar para definir estado inicial
   const getInitialFilter = () => {
     const hash = window.location.hash;
@@ -75,15 +79,15 @@ function App() {
       <SpaceBackground isMobile={isMobile} />
       <main className={`${styles.heroSection} ${activeFilter ? styles.hidden : ''}`}>
         
-        <span className={styles.greeting}>OLÁ, MEU NOME É</span>
-        <h1 className={styles.title}>Luiz Weber.</h1>
-        <h2 className={styles.subtitle}>Sou desenvolvedor de sistemas.</h2>
+        <span className={styles.greeting}>{t.hero.greeting}</span>
+        <h1 className={styles.title}>{t.hero.name}</h1>
+        <h2 className={styles.subtitle}>{t.hero.title}</h2>
         
         <p className={styles.introText}>
-          Atuo como programador desde 2009. <br/>         
-          Natural do Paraná, Brasil, tenho mais de 15 anos de experiência em backend e frontend.<br/>
+          {t.hero.intro} <br/>         
+          {t.hero.location}<br/>
 <br/>
-          Fique à vontade para explorar meus <a href="#projetos" onClick={(e) => { e.preventDefault(); handleQuickAccess('projetos'); }}>projetos</a>, saber mais <a href="#sobre" onClick={(e) => { e.preventDefault(); handleQuickAccess('sobre'); }}>sobre mim</a> ou ler meus artigos no <a href="#blog" onClick={(e) => { e.preventDefault(); handleQuickAccess('blog'); }}>blog</a>.<br/>
+          {t.hero.explore} <a href="#projetos" onClick={(e) => { e.preventDefault(); handleQuickAccess('projetos'); }}>{t.hero.projects}</a>, {t.hero.knowMore} <a href="#sobre" onClick={(e) => { e.preventDefault(); handleQuickAccess('sobre'); }}>{t.hero.aboutMe}</a> {t.hero.or} {t.hero.readArticles} <a href="#blog" onClick={(e) => { e.preventDefault(); handleQuickAccess('blog'); }}>{t.nav.blog}</a>.<br/>
         </p>
       </main>
 
@@ -112,6 +116,9 @@ function App() {
         </a>
         <a href="https://linkedin.com/in/luizwbr" target="_blank" rel="noopener" className={styles.footerLink} title="LinkedIn">
             <FiLinkedin />
+        </a>
+        <a href="https://deviantart.com/luizwbr" target="_blank" rel="noopener" className={styles.footerLink} title="DeviantArt">
+            <FiImage />
         </a>
         <a href="https://www.weber.eti.br" target="_blank" rel="noopener" className={styles.footerLink} title="Website">
             <FiGlobe />

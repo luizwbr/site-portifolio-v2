@@ -2,15 +2,20 @@
 import React from 'react';
 import { FiUser, FiTool, FiBriefcase, FiX } from 'react-icons/fi';
 import styles from './AboutSection.module.css';
-import { portfolioData, ITEM_TYPES } from '../data/source';
+import { getPortfolioData, getItemTypes } from '../data/source';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const AboutSection = ({ onClose }) => {
+  const { t, currentLanguage } = useLanguage();
+  const portfolioData = getPortfolioData(currentLanguage);
+  const ITEM_TYPES = getItemTypes(currentLanguage);
+  
   const skills = portfolioData.filter(item => item.type === ITEM_TYPES.SKILL);
   const experiences = portfolioData.filter(item => item.type === ITEM_TYPES.BIO);
 
   return (
     <section className={styles.aboutSection} id="sobre">
-      <button className={styles.closeButton} onClick={onClose} aria-label="Fechar">
+      <button className={styles.closeButton} onClick={onClose} aria-label={t.about.close}>
         <FiX size={24} />
       </button>
 
@@ -19,10 +24,10 @@ const AboutSection = ({ onClose }) => {
         <div className={styles.header}>
           <div className={styles.titleContainer}>
             <FiUser className={styles.icon} size={32} />
-            <h1 className={styles.mainTitle}>Sobre Mim</h1>
+            <h1 className={styles.mainTitle}>{t.about.title}</h1>
           </div>
           <p className={styles.mainSubtitle}>
-            Tenho pós-graduação em Engenharia de Software com ênfase em Testes e mais de 15 anos de experiência na área de Tecnologia da Informação (TI).
+            {t.about.subtitle}
           </p>
         </div>
 
@@ -30,7 +35,7 @@ const AboutSection = ({ onClose }) => {
         <div className={styles.section}>
           <div className={styles.sectionHeader}>
             <FiBriefcase size={24} />
-            <h2 className={styles.sectionTitle}>Trajetória Profissional</h2>
+            <h2 className={styles.sectionTitle}>{t.about.professionalPath}</h2>
           </div>
           <div className={styles.timeline}>
             {experiences.map((exp) => (
@@ -58,7 +63,7 @@ const AboutSection = ({ onClose }) => {
         <div className={styles.section}>
           <div className={styles.sectionHeader}>
             <FiTool size={24} />
-            <h2 className={styles.sectionTitle}>Competências Técnicas</h2>
+            <h2 className={styles.sectionTitle}>{t.about.technicalSkills}</h2>
           </div>
           <div className={styles.skillsGrid}>
             {skills.map((skill) => (

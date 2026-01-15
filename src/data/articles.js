@@ -1,4 +1,12 @@
 // src/data/articles.js
+import { 
+    articlesEN, 
+    getPublishedArticlesEN, 
+    getArticleByIdEN, 
+    getArticleBySlugEN, 
+    getArticlesByTagEN, 
+    getAllTagsEN 
+} from './articles.en';
 
 // Função para gerar slug a partir do título
 export const generateSlug = (title) => {
@@ -13,6 +21,72 @@ export const generateSlug = (title) => {
 };
 
 export const articles = [
+    {
+        id: 'article-2',
+        slug: 'tive-uma-empresa-uma-vez-compartilhando-com-voces',
+        title: 'Tive uma empresa uma vez: compartilhando com vocês',
+        excerpt: 'A história de como criei e fechei minha própria empresa de plugins e integrações de e-commerce, e as lições aprendidas no processo.',
+        date: '2026-01-15',
+        readTime: '8 min',
+        tags: ['Empreendedorismo', 'E-commerce', 'Carreira', 'Lições'],
+        content: `
+
+Em 2016 eu recém tinha saído da Webgenium, a principal agência de sites e e-commerce da região de Cascavel.
+
+Em uma época onde não havia esta facilidade que a IA tem hoje, redes sociais se resumiam a Facebook e Twitter, sites em WIX ainda estavam no começo, a demanda por sites era grande.
+
+## O cenário do e-commerce em 2016
+
+Falando de e-commerce, a Amazon não tinha chegado no Brasil, o Mercado Livre não tinha a reputação que tem hoje e Shopee nem sabíamos da existência.
+
+Existiam diversas agências especializadas em criar sites e e-commerces e a empresa onde eu trabalhava era assim.
+
+Criamos muitos sites, ferramentas, integrações com meios de pagamento (Cielo, Redecard, PagSeguro, etc), enfim, o tempo era interessante.
+
+Na tentativa de acelerar a criação de sites, até foi criada uma ferramenta muito interessante, que unia WHMCS + Joomla + automações para subir um site básico com escolha de templates, em questão de minutos: o **SiteKit**. Inclusive o domínio [sitekit.com.br](http://sitekit.com.br) ainda pertence à empresa.
+
+## A ideia de negócio
+
+Mas o ponto nem é este, o que é interessante é que com essa demanda de e-commerce, eu atuava em paralelo, vendendo plugins e integrações de e-commerce (Joomla / Virtuemart e depois Wordpress) para outras empresas ou agências.
+
+Cada plugin tinha diferentes preços, por exemplo: **R$ 289 reais por site** com um ano de suporte e atualizações inclusas.
+
+Bom, e nisso eu achava que tinha uma startup de uma pessoa só.
+
+Acabei decidindo investir meu tempo nisso e seguir em carreira solo, com meu MEI.
+
+## A realidade do negócio
+
+Fiz consultoria no SEBRAE na época, eu achava que este processo era viável, mas na prática eu trabalhava demais pro retorno que não tinha.
+
+Para cada novo cliente, mesmo com tutoriais prontos e um processo de instalação e configuração via interface do Joomla, geralmente tinha uma porção de e-mails trocados entre mim e o cliente, para configurar um novo site.
+
+Isso quando era configuração com a Cielo, por exemplo, tinha que manualmente preencher um formulário para ativar a loja e depois poder ativar o pagamento.
+
+### O problema de escalabilidade
+
+Enfim, eu achei que este processo todo era viável, mas **quanto mais vendas, mais trabalho**. Ou seja, não era viável manter o negócio.
+
+Final das contas: as vendas de plugins diminuíram tanto que não consegui me manter e tive de fechar a empresa.
+
+## A melhor decisão
+
+Mas foi a **melhor decisão que tomei naquele momento**, desta forma eu pude me concentrar em algo muito importante: ser pai.
+
+## Lições aprendidas
+
+1. **Suporte não escala** - Um produto que exige muito suporte manual por cliente não é escalável
+2. **Automação é essencial** - Se você não consegue automatizar o onboarding, repense o modelo
+3. **Tempo tem valor** - Nem sempre mais vendas significa mais sucesso se isso consome todo seu tempo
+4. **Prioridades mudam** - Às vezes fechar um negócio é a decisão mais inteligente
+5. **Experiência vale ouro** - Aprendi muito sobre e-commerce, pagamentos e atendimento ao cliente
+
+Hoje olho para trás e vejo que aquela experiência foi fundamental para minha carreira. Aprendi na prática o que funciona e o que não funciona em um negócio digital.
+
+E você? Já tentou empreender? Compartilhe sua experiência nos comentários!
+        `,
+        published: true
+    },
     {
         id: 'article-1',
         slug: 'como-construir-um-portfolio-interativo-com-react',
@@ -87,7 +161,7 @@ Adicionei uma seção de artigos completa:
 - URLs compartilháveis por artigo
 - Botões de compartilhamento social (Twitter, LinkedIn, Facebook)
 
-Cada artigo tem seu slug: \`#artigo/como-construir-um-portfolio-interativo-com-react\`
+Cada artigo tem seu slug: \`#article/como-construir-um-portfolio-interativo-com-react\`
 
 ### 3. Seção "Sobre" unificada
 
@@ -397,3 +471,25 @@ export const getAllTags = () => {
     });
     return Array.from(tagsSet).sort();
 };
+
+// Functions with i18n support
+export const getPublishedArticlesI18n = (language = 'pt-BR') => {
+    return language === 'en-US' ? getPublishedArticlesEN() : getPublishedArticles();
+};
+
+export const getArticleByIdI18n = (id, language = 'pt-BR') => {
+    return language === 'en-US' ? getArticleByIdEN(id) : getArticleById(id);
+};
+
+export const getArticleBySlugI18n = (slug, language = 'pt-BR') => {
+    return language === 'en-US' ? getArticleBySlugEN(slug) : getArticleBySlug(slug);
+};
+
+export const getArticlesByTagI18n = (tag, language = 'pt-BR') => {
+    return language === 'en-US' ? getArticlesByTagEN(tag) : getArticlesByTag(tag);
+};
+
+export const getAllTagsI18n = (language = 'pt-BR') => {
+    return language === 'en-US' ? getAllTagsEN() : getAllTags();
+};
+

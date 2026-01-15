@@ -1,9 +1,19 @@
 // src/data/source.js
+import { portfolioDataEN, ITEM_TYPES_EN } from './source.en';
 
 export const ITEM_TYPES = {
     PROJECT: 'Projeto',
     SKILL: 'Competência',
     BIO: 'Bio/Experiência',
+};
+
+// Function to get data based on language
+export const getPortfolioData = (language = 'pt-BR') => {
+    return language === 'en-US' ? portfolioDataEN : portfolioData;
+};
+
+export const getItemTypes = (language = 'pt-BR') => {
+    return language === 'en-US' ? ITEM_TYPES_EN : ITEM_TYPES;
 };
 
 export const portfolioData = [

@@ -1,9 +1,12 @@
 // src/components/PortfolioCard.jsx
 import React from 'react';
 import { FiFolder, FiTool, FiUser, FiArrowRight, FiExternalLink } from 'react-icons/fi';
+import { useLanguage } from '../i18n/LanguageContext';
 import styles from './PortfolioCard.module.css';
 
 const PortfolioCard = ({ item, onClick }) => {
+  const { t } = useLanguage();
+  
   const getIcon = () => {
     switch (item.type) {
       case 'Projeto':
@@ -73,11 +76,12 @@ const PortfolioCard = ({ item, onClick }) => {
         <button className={styles.viewMore}>
           {isExternalProject ? (
             <>
-              Ver no GitHub <FiExternalLink size={16} />
+              {t.projects.viewOnGithub} <FiExternalLink size={16} />
             </>
           ) : (
             <>
-              Ver detalhes <FiArrowRight size={16} />
+              {t.projects.viewDetails} <FiArrowRight size={16} />
+
             </>
           )}
         </button>

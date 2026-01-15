@@ -1,0 +1,51 @@
+// src/i18n/pt-BR.js
+export const ptBR = {
+  nav: {
+    home: 'Home',
+    projects: 'Projetos',
+    blog: 'Blog',
+    about: 'Sobre',
+  },
+  hero: {
+    greeting: 'OLÁ, MEU NOME É',
+    name: 'Luiz Weber.',
+    title: 'Sou desenvolvedor de sistemas.',
+    intro: 'Atuo como programador desde 2009.',
+    location: 'Natural do Paraná, Brasil, tenho mais de 15 anos de experiência em backend e frontend.',
+    explore: 'Fique à vontade para explorar meus',
+    projects: 'projetos',
+    knowMore: 'saber mais',
+    aboutMe: 'sobre mim',
+    or: 'ou',
+    readArticles: 'ler meus artigos no',
+  },
+  about: {
+    title: 'Sobre Mim',
+    subtitle: 'Tenho pós-graduação em Engenharia de Software com ênfase em Testes e mais de 15 anos de experiência na área de Tecnologia da Informação (TI).',
+    professionalPath: 'Trajetória Profissional',
+    technicalSkills: 'Competências Técnicas',
+    close: 'Fechar',
+  },
+  projects: {
+    title: 'Projetos',
+    subtitle: 'Veja alguns projetos que estive trabalhando recentemente. Mais projetos no meu',
+    github: 'GitHub',
+    noItems: 'Nenhum item encontrado.',
+    close: 'Fechar',
+    viewOnGithub: 'Ver no GitHub',
+    viewDetails: 'Ver detalhes',
+  },
+  blog: {
+    title: 'Artigos',
+    subtitle: 'Compartilhando conhecimentos e experiências sobre desenvolvimento de software',
+    filterBy: 'Filtrar por:',
+    clearFilter: 'Limpar filtro',
+    readTime: 'min',
+    close: 'Fechar',
+    share: 'Compartilhar',
+    shareOn: 'Compartilhar no',
+  },
+  common: {
+    close: 'Fechar',
+  }
+};
