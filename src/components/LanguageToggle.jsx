@@ -18,10 +18,10 @@ const LanguageToggle = () => {
       aria-label={currentLanguage === 'pt-BR' ? 'Switch to English' : 'Mudar para Português'}
     >
       <span className={styles.flag}>
-        {currentLanguage === 'pt-BR' ? '🇺🇸' : '🇧🇷'}
+        {currentLanguage === 'pt-BR' ? '🇧🇷' : '🇺🇸'}
       </span>
       <span className={styles.label}>
-        {currentLanguage === 'pt-BR' ? 'EN' : 'PT'}
+        {currentLanguage === 'pt-BR' ? 'PT'  : 'EN'}
       </span>
     </button>
   );
