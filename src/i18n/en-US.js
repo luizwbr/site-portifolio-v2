@@ -9,9 +9,9 @@ export const enUS = {
   hero: {
     greeting: 'HELLO, MY NAME IS',
     name: 'Luiz Weber.',
-    title: 'I am a systems developer.',
+    title: 'I am a software developer.',
     intro: 'I have been working as a programmer since 2009.',
-    location: 'From Paraná, Brazil, I have over 15 years of experience in backend and frontend.',
+    location: 'I\'m from Paraná, Brazil. I have over 15 years of experience in backend and frontend.',
     explore: 'Feel free to explore my',
     projects: 'projects',
     knowMore: 'learn more',
