@@ -5,6 +5,7 @@ import BlogSection from './components/BlogSection';
 import PortfolioSection from './components/PortfolioSection';
 import AboutSection from './components/AboutSection';
 import TopNav from './components/TopNav';
+import PromotionalBanner from './components/PromotionalBanner';
 import { getItemTypes } from './data/source';
 import { useLanguage } from './i18n/LanguageContext';
 import { FiGithub, FiLinkedin, FiGlobe, FiMail, FiMousePointer, FiImage } from 'react-icons/fi';
@@ -109,6 +110,9 @@ function App() {
         <BlogSection showCloseButton={true} onClose={handleClosePortfolio} />
       )}
       {!activeFilter && <BlogSection showCloseButton={false} />}
+
+      {/* Promotional Banner */}
+      {!activeFilter && <PromotionalBanner />}
 
       <footer className={styles.footer}>
         <a href="https://github.com/luizwbr" target="_blank" rel="noopener" className={styles.footerLink} title="GitHub">

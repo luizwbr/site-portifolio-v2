@@ -47,5 +47,16 @@ export const enUS = {
   },
   common: {
     close: 'Close',
+  },
+  promotional: {
+    title: 'Also check out',
+    deviantart: {
+      title: 'DeviantArt Portfolio',
+      description: 'Explore my digital art portfolio and visual creations on DeviantArt',
+    },
+    newsletter: {
+      title: 'Newsletter: Resumo do Resumo Dev',
+      description: 'LinkedIn newsletter about web development, technologies and trends',
+    },
   }
 };

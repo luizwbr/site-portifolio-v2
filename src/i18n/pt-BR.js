@@ -47,5 +47,16 @@ export const ptBR = {
   },
   common: {
     close: 'Fechar',
+  },
+  promotional: {
+    title: 'Conheça também',
+    deviantart: {
+      title: 'DeviantArt Portfolio',
+      description: 'Explore meu portfólio de arte digital e criações visuais no DeviantArt',
+    },
+    newsletter: {
+      title: 'Newsletter: Resumo do Resumo Dev',
+      description: 'Newsletter no LinkedIn sobre desenvolvimento web, tecnologias e tendências',
+    },
   }
 };
