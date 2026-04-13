@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SpaceBackground from './components/SpaceBackground';
 import BlogSection from './components/BlogSection';
 import PortfolioSection from './components/PortfolioSection';
@@ -24,6 +24,20 @@ function App() {
   };
   
   const [activeFilter, setActiveFilter] = useState(getInitialFilter);
+
+  // Atualiza o título da aba do browser conforme a seção ativa
+  useEffect(() => {
+    const titles = t.pageTitles;
+    if (activeFilter === 'sobre') {
+      document.title = titles.about;
+    } else if (activeFilter === 'blog') {
+      document.title = titles.blog;
+    } else if (activeFilter !== null) {
+      document.title = titles.projects;
+    } else {
+      document.title = titles.home;
+    }
+  }, [activeFilter, t]);
   
   // Detectar se é mobile
   const [isMobile] = useState(() => {

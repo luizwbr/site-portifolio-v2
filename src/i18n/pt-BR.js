@@ -47,5 +47,11 @@ export const ptBR = {
   },
   common: {
     close: 'Fechar',
-  }
+  },
+  pageTitles: {
+    home: 'Luiz Weber — Desenvolvedor de Sistemas',
+    about: 'Sobre | Luiz Weber',
+    projects: 'Projetos | Luiz Weber',
+    blog: 'Blog | Luiz Weber',
+  },
 };
