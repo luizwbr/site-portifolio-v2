@@ -47,5 +47,11 @@ export const enUS = {
   },
   common: {
     close: 'Close',
-  }
+  },
+  pageTitles: {
+    home: 'Luiz Weber — Software Developer',
+    about: 'About | Luiz Weber',
+    projects: 'Projects | Luiz Weber',
+    blog: 'Blog | Luiz Weber',
+  },
 };
